@@ -76,15 +76,15 @@ async function addPageToDatabase() {
   });
 
   // Print the new database's URL. Visit the URL in your browser to see the pages that get created in the next step.
-  if (true && newDatabase) inspector("addPageToDatabase.newDatabase:", newDatabase);
+  if (isDebug && newDatabase) inspector("addPageToDatabase.newDatabase:", newDatabase);
   // const urlNewDatabase = newDatabase.url? newDatabase.url : "";
-  console.log(newDatabase.url);
+  // console.log(newDatabase.url);
 
   const databaseId = newDatabase.id;
   // If there is no ID (if there's an error), return.
   if (!databaseId) return;
 
-  console.log("Adding new pages...");
+  // console.log("Adding new pages...");
   for (let i = 0; i < propertiesForNewPages.length; i++) {
     // Add a few new pages to the database that was just created
     await addNotionPageToDatabase(databaseId, propertiesForNewPages[i]);

@@ -19,13 +19,16 @@ The files in each directory will build on each other to increase in complexity. 
 
 In case you are looking for example code for a specific task, the files are divided as follows:
 
-- `/basic/1-add-block.js`: Create a new block and append it to an existing Notion page.
-- `/basic/2-add-linked-block.js`: Create and append new blocks, and add a link to the text of a new block.
-- `/basic/3-add-styled-block.js`: Create and append new blocks, and apply text styles to them.
-- `/intermediate/1-create-a-database.js`: Create a new database with defined properties.
-- `/intermediate/2-add-page-to-database.js`: Create a new database and add new pages to it.
-- `/intermediate/3-query-database.js`: Create a new database, add pages to it, and filter the database entries (pages).
-- `/intermediate/4-sort-database.js`: Create a new database, add pages to it, and filter/sort the database entries (pages).
+- `/index.ts`: The entry point, the file to launch the application
+- `/mytypes.ts`: Assigning types to an application
+- `/lib/util.ts`: General purpose functions.
+- `/basic/1-add-block.ts`: Create a new block and append it to an existing Notion page.
+- `/basic/2-add-linked-block.ts`: Create and append new blocks, and add a link to the text of a new block.
+- `/basic/3-add-styled-block.ts`: Create and append new blocks, and apply text styles to them.
+- `/intermediate/1-create-a-database.ts`: Create a new database with defined properties.
+- `/intermediate/2-add-page-to-database.ts`: Create a new database and add new pages to it.
+- `/intermediate/3-query-database.ts`: Create a new database, add pages to it, and filter the database entries (pages).
+- `/intermediate/4-sort-database.ts`: Create a new database, add pages to it, and filter/sort the database entries (pages).
 
 ## Running locally
 
@@ -34,14 +37,13 @@ In case you are looking for example code for a specific task, the files are divi
 To use this example on your machine, clone the repo and move into your local copy:
 
 ```zsh
-git clone https://github.com/makenotion/notion-sdk-js.git
-cd /notion-sdk-js
+git clone https://github.com/bsa-git/intro-to-notion-api
+cd /intro-to-notion-api
 ```
 
-Next, move into this example in the `/examples` directory, and install its dependencies:
+Next, install its dependencies:
 
 ```zsh
-cd /examples/intro-to-notion-api
 npm install
 ```
 
@@ -52,11 +54,11 @@ A `.env.example` file has been included and can be renamed `.env` (or you can ru
 Update the environment variables below:
 
 ```zsh
-NOTION_API_KEY=<your-notion-api-key>
+NOTION_TOKEN=<your-notion-api-key>
 NOTION_PAGE_ID=<notion-page-id>
 ```
 
-`NOTION_API_KEY`: Create a new integration in the [integrations dashboard](https://www.notion.com/my-integrations) and retrieve the API key from the integration's `Secrets` page.
+`NOTION_TOKEN`: Create a new integration in the [integrations dashboard](https://www.notion.com/my-integrations) and retrieve the API key from the integration's `Secrets` page.
 
 `NOTION_PAGE_ID`: Use the ID of any Notion page that you want to test adding content to.
 
@@ -76,15 +78,25 @@ Once selected, your integration will have permission to read content from the pa
 
 **If you are receiving authorization errors, make sure the integration has permission to access the page.**
 
-### 3. Run individual examples
+### 3. Run the application
 
-To run each individual example, use the `node` command with the file's path.
+In the file "package.json" in the "scripts" section, the actions that can be performed in the application are specified.
 
 For example:
 
 ```zsh
-node /basic/1-add-block.js
+...
+"scripts": {
+    "build": "npx tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+ }
+ ... 
 ```
+To run the application in development mode, you need to run the command `npm run dev`.
+To compile the application, you need to run the command `npm run build`.
+To run the application in production mode, you need to run the command `npm start`.
 
 ---
 
