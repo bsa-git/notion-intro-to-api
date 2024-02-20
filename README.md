@@ -63,7 +63,7 @@ NOTION_PAGE_ID=<notion-page-id>
 `NOTION_PAGE_ID`: Use the ID of any Notion page that you want to test adding content to.
 
 The page ID is the 32 character string at the end of any page URL.
-![A Notion page URL with the ID highlighted](./assets/page_id.png)
+![A Notion page URL with the ID highlighted](./src/assets/page_id.png)
 
 ### 3. Give the integration access to your page
 
