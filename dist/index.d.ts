@@ -1,0 +1,1 @@
+import "colorts/lib/string";

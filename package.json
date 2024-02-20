@@ -1,0 +1,41 @@
+{
+  "name": "intro-to-notion-api",
+  "version": "1.0.0",
+  "description": "Introductory examples of using Notion's public API via the Notion SDK for JavaScript.",
+  "engines": {
+    "node": "20.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/makenotion/notion-sdk-js.git"
+  },
+  "author": "Jess Mitchell",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/makenotion/notion-sdk-js/issues"
+  },
+  "keywords": [
+    "node",
+    "notion"
+  ],
+  "main": "dist/index.js",
+  "type": "commonjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "npx tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@notionhq/client": "^2.2.7",
+    "colorts": "^0.1.63",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.19",
+    "nodemon": "^3.0.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}
