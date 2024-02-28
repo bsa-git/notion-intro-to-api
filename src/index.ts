@@ -42,13 +42,13 @@ async function main() {
     if (isDebug && response) inspector("addBlock.response", response);
   }
 
-  if (isRun && createDatabase) {
+  if (true && createDatabase) {
     response = await createDatabase();
     console.log("<-- Create dataBase in Notion: OK -->".green);
-    if (isDebug && response) inspector("createDatabase.response", response);
+    if (true && response) inspector("createDatabase.response", response);
   }
 
-  if (true && createDatabase2) {
+  if (isRun && createDatabase2) {
     response = await createDatabase2();
     console.log(
       "<-- Create dataBase and add page to dataBase in Notion: OK -->".green,

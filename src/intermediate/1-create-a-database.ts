@@ -1,4 +1,4 @@
-import { IdType } from "../mytypes";
+import { IdType, CreateDatabaseResponse } from "../mytypes";
 import { Client } from "@notionhq/client";
 import { config } from "dotenv";
 
@@ -21,7 +21,7 @@ const notion = new Client({ auth: apiKey });
 
 async function newDatabase() {
   // Create a new database
-  const newDatabaseResponse = await notion.databases.create({
+  const newDatabaseResponse:CreateDatabaseResponse = await notion.databases.create({
     parent: {
       type: "page_id",
       page_id: pageId,
@@ -54,6 +54,7 @@ async function newDatabase() {
   });
 
   // Print the new database response
+  // console.log(newDatabaseResponse.url)
   return newDatabaseResponse;
 }
 
