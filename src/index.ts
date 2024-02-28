@@ -2,7 +2,7 @@ import "colorts/lib/string";
 import { inspector } from "./lib/util";
 import {
   AppendBlockChildrenResponse as blockResponse,
-  PartialDatabaseObjectResponse as databaseResponse,
+  DatabaseObjectResponse as databaseResponse
 } from "./mytypes";
 import addBlock from "./basic/1-add-block";
 import addLinkedBlock from "./basic/2-add-linked-block";
@@ -42,10 +42,12 @@ async function main() {
     if (isDebug && response) inspector("addBlock.response", response);
   }
 
-  if (true && createDatabase) {
+  if (isRun && createDatabase) {
     response = await createDatabase();
     console.log("<-- Create dataBase in Notion: OK -->".green);
-    if (true && response) inspector("createDatabase.response", response);
+    if (isDebug && response) inspector("createDatabase.response", response);
+    // Print URL for the new database response
+    if (isDebug && response) console.log(response.url)
   }
 
   if (isRun && createDatabase2) {

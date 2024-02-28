@@ -1,7 +1,4 @@
-import { 
-  IdType,
-  PartialDatabaseObjectResponse as databaseResponse
-} from "../mytypes";
+import { IdType, DatabaseObjectResponse } from "../mytypes";
 import { inspector } from "../lib/util";
 
 import { Client } from "@notionhq/client";
@@ -43,7 +40,7 @@ async function addNotionPageToDatabase(
 
 async function addPageToDatabase() {
   // Create a new database
-  const newDatabase: databaseResponse = await notion.databases.create({
+  const newDatabase = (await notion.databases.create({
     parent: {
       type: "page_id",
       page_id: pageId,
@@ -73,12 +70,11 @@ async function addPageToDatabase() {
         date: {},
       },
     },
-  });
+  })) as DatabaseObjectResponse;
 
   // Print the new database's URL. Visit the URL in your browser to see the pages that get created in the next step.
-  if (isDebug && newDatabase) inspector("addPageToDatabase.newDatabase:", newDatabase);
-  // const urlNewDatabase = newDatabase.url? newDatabase.url : "";
-  // console.log(newDatabase.url);
+  if (isDebug && newDatabase)
+    inspector("addPageToDatabase.newDatabase:", newDatabase);
 
   const databaseId = newDatabase.id;
   // If there is no ID (if there's an error), return.
